@@ -1,4 +1,28 @@
-function CodeEditor({ code, setCode, language, setLanguage, analyzeCode }) {
+import Editor from "@monaco-editor/react";
+
+function CodeEditor({
+  code,
+  setCode,
+  language,
+  setLanguage,
+  analyzeCode
+}) {
+
+  const getLanguage = () => {
+    switch(language) {
+      case "Java":
+        return "java";
+      case "Python":
+        return "python";
+      case "JavaScript":
+        return "javascript";
+      case "PHP":
+        return "php";
+      default:
+        return "java";
+    }
+  };
+
   return (
     <div>
       <h2>AI Coding Tutor</h2>
@@ -7,23 +31,23 @@ function CodeEditor({ code, setCode, language, setLanguage, analyzeCode }) {
         value={language}
         onChange={(e) => setLanguage(e.target.value)}
       >
-        <option value="Java">Java</option>
-        <option value="Python">Python</option>
-        <option value="JavaScript">JavaScript</option>
-        <option value="PHP">PHP</option>
+        <option>Java</option>
+        <option>Python</option>
+        <option>JavaScript</option>
+        <option>PHP</option>
       </select>
 
       <br /><br />
 
-      <textarea
-        rows="15"
-        cols="80"
+      <Editor
+        height="500px"
+        theme="vs-dark"
+        language={getLanguage()}
         value={code}
-        onChange={(e) => setCode(e.target.value)}
-        placeholder="Paste your code here..."
+        onChange={(value) => setCode(value)}
       />
 
-      <br /><br />
+      <br />
 
       <button onClick={analyzeCode}>
         Analyze Code
