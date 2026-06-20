@@ -15,18 +15,38 @@ function App() {
 
   return (
     <div className="app">
-      <CodeEditor
-        code={code}
-        setCode={setCode}
-        language={language}
-        setLanguage={setLanguage}
-        analyzeCode={analyzeCode}
-      />
 
-      <hr />
+  <div className="hero">
+    <h1>🤖 AI Tutor</h1>
+    <p>
+      Debug. Learn. Improve.
+      <br />
+      Paste your code and get AI-powered feedback.
+    </p>
+  </div>
 
-      <Results result={result} />
+  <div className="stats">
+
+    <div className="stat-card">
+      <h2>4</h2>
+      <p>Languages</p>
     </div>
+
+    <div className="stat-card">
+      <h2>0</h2>
+      <p>Analyses</p>
+    </div>
+
+    <div className="stat-card">
+      <h2>0</h2>
+      <p>Bugs Fixed</p>
+    </div>
+
+  </div>
+
+  {/* Existing components go here */}
+
+</div>
   );
 }
 
